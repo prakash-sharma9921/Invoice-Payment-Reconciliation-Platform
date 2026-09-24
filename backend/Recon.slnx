@@ -1,0 +1,12 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Recon.Api/Recon.Api.csproj" />
+    <Project Path="src/Recon.Application/Recon.Application.csproj" />
+    <Project Path="src/Recon.Domain/Recon.Domain.csproj" />
+    <Project Path="src/Recon.Infrastructure/Recon.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Recon.IntegrationTests/Recon.IntegrationTests.csproj" />
+    <Project Path="tests/Recon.UnitTests/Recon.UnitTests.csproj" />
+  </Folder>
+</Solution>
