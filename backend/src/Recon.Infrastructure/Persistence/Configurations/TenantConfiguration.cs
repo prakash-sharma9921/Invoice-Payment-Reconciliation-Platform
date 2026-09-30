@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Recon.Domain.Entities;
 
-namespace Recon.Infrastructure.Presistance.Configuration;
+namespace Recon.Infrastructure.Persistence.Configuration;
 
 public class TenantConfiguration : IEntityTypeConfiguration<Tenant>
 {

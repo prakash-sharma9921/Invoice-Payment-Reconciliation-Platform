@@ -1,9 +1,10 @@
 using Microsoft.EntityFrameworkCore;
+using Recon.Application.Common.Interfaces;
 using Recon.Domain.Entities;
 
-namespace Recon.Infrastructure.Presistance;
+namespace Recon.Infrastructure.Persistence;
 
-public class ReconDbContext : DbContext
+public class ReconDbContext : DbContext, IApplicationDbContext
 {
     public ReconDbContext(DbContextOptions<ReconDbContext> options) : base(options)
     {

@@ -5,8 +5,8 @@ channels, and automatically matches payments against invoices — including
 partial payments, overpayments, and one payment settling several invoices.
 
 > **Status:** in active development. Being built one vertical slice at a time
-> (database → domain → API → UI → tests). Foundation complete: solution
-> structure, EF Core, and the first table are in place.
+> (database → domain → API → UI → tests). First slice complete: multi-tenant
+> foundation with the Tenant module (create/list) fully built and tested.
 
 ## Tech stack
 
@@ -37,6 +37,15 @@ docker compose up -d
 # 4. Create the database tables
 dotnet ef database update --project src/Recon.Infrastructure --startup-project src/Recon.Api
 ```
+
+## Running the tests
+
+```bash
+cd backend
+dotnet test
+```
+
+Tests use in-memory databases, so they need no Docker or SQL Server running.
 
 ## Project documentation
 

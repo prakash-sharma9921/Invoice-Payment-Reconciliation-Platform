@@ -1,6 +1,22 @@
-@Recon.Api_HostAddress = http://localhost:5075
+@host = http://localhost:5075
 
-GET {{Recon.Api_HostAddress}}/weatherforecast/
-Accept: application/json
+### List all tenants (empty at first)
+GET {{host}}/api/tenants
 
-###
+### Create a tenant
+POST {{host}}/api/tenants
+Content-Type: application/json
+
+{
+  "name": "Fajr Investment",
+  "code": "fajr"
+}
+
+### Try a bad one (should fail validation)
+POST {{host}}/api/tenants
+Content-Type: application/json
+
+{
+  "name": "",
+  "code": "fajr11"
+}
