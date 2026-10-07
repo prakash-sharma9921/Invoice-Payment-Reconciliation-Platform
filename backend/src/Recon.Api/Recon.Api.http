@@ -20,3 +20,32 @@ Content-Type: application/json
   "name": "",
   "code": "fajr11"
 }
+
+### List all clients (empty at first)
+GET {{host}}/api/clients
+X-Tenant-Id: FCBEFB60-65C5-465A-8EC8-888818758FEA
+
+
+### Create a client
+POST {{host}}/api/clients
+X-Tenant-Id: FCBEFB60-65C5-465A-8EC8-888818758FEA
+Content-Type: application/json
+
+{
+  "name": "Prakash Sharma",
+  "email": "fajr@gmail.com",
+  "phone": "+973 3950 3582",
+  "type": 1
+}
+
+### Try a bad one (should fail validation)
+POST {{host}}/api/clients
+X-Tenant-Id: FCBEFB60-65C5-465A-8EC8-888818758FEA
+Content-Type: application/json
+
+{
+  "name": "",
+  "email": "fajr@gmail",
+  "phone": "fajr",
+  "type": 9
+}

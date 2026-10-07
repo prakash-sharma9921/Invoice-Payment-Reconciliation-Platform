@@ -5,12 +5,14 @@ namespace Recon.UnitTests;
 
 public static class TestDbContextFactory
 {
-    public static ReconDbContext Create()
+    public static ReconDbContext Create(Guid tenantId)
     {
         var options = new DbContextOptionsBuilder<ReconDbContext>()
-                        .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString())
+                        .UseInMemoryDatabase(Guid.NewGuid().ToString())
                         .Options;
 
-        return new ReconDbContext(options);
+        return new ReconDbContext(options, new FakeCurrentTenant(tenantId));
     }
+
+    public static ReconDbContext Create() => Create(Guid.NewGuid());
 }

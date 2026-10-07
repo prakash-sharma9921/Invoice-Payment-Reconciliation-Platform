@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Recon.Infrastructure.Persistence;
 
@@ -11,9 +12,11 @@ using Recon.Infrastructure.Persistence;
 namespace Recon.Infrastructure.Migrations
 {
     [DbContext(typeof(ReconDbContext))]
-    partial class ReconDbContextModelSnapshot : ModelSnapshot
+    [Migration("20261005143623_AddClientsTable")]
+    partial class AddClientsTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

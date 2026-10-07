@@ -1,6 +1,8 @@
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using Recon.Api.Endpoints;
+using Recon.Api.Tenancy;
+using Recon.Application.Clients;
 using Recon.Application.Common.Interfaces;
 using Recon.Application.Tenants;
 using Recon.Infrastructure.Persistence;
@@ -16,6 +18,9 @@ builder.Services.AddScoped<IApplicationDbContext>(sp => sp.GetRequiredService<Re
 
 // Register our tenant logic
 builder.Services.AddScoped<ITenantService, TenantService>();
+builder.Services.AddScoped<IClientService, ClientService>();
+builder.Services.AddHttpContextAccessor();      // enables reading the current request
+builder.Services.AddScoped<ICurrentTenant, HeaderCurrentTenant>();      // "when someone needs ICurrentTenant, give them this"
 
 // Find and register every FluentValidation validator in the Application project
 builder.Services.AddValidatorsFromAssemblyContaining<CreateTenantRequest>();
@@ -32,6 +37,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.MapTenantEndpoints();
+app.MapClientEndpoints();
 app.Run();
 
 // Makes the auto-generated Program class visible to the integration test project.
